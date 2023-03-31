@@ -1,5 +1,26 @@
+<section class="text-gray-600 body-font">
+    <div class="container mx-auto flex flex-col px-5 py-10 justify-center items-center">
+        <div class="w-full md:w-2/3 flex flex-col mb-16 items-center text-center">
+            <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 font-mono">AI-powered resumes to
+                <span class="text-indigo-500">get you hired</span> at top companies
+            </h1>
+            <p class="mb-8 leading-relaxed">You got the skills. We know you work hard, let us review and edit your
+                resume so that you can apply for jobs with confidence </p>
+            <div class="flex w-full justify-center items-end">
 
+                <img src="{% static 'hakazi-partner-logos.png' %}" alt="hakazi-partner-logos">
+            </div>
 
+            <div class="flex mt-12">
+                <button
+                    class="mx-2 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                    <a href="{% url 'get-user-email' %}"
+                        class="ml-4 flex items-start flex-col leading-none inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
 
-
-<p>home works!</p>
+                        <span class="title-font font-medium ">Create resume now</span>
+                    </a>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
