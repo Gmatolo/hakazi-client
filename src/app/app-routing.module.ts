@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'submit-user-email', component: UserEmailComponent },
   { path: 'resume', component: ResumeUploadComponent },
   { path: 'upload-success', component: ResumeUploadSuccessComponent },
-  { path: '**', redirectTo: '' },
+  // { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
