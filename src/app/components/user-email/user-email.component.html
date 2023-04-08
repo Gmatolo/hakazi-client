@@ -4,12 +4,11 @@
     <form (ngSubmit)="onSubmit()" class="mb4">
         <label>Email address:</label>
         <input type="email" [(ngModel)]="email" name="email" required>
-        <button type="submit">Submit</button>
-    
-    
-    <!-- <p *ngIf="errorMessage">{{ errorMessage }}</p> -->
-        <button type="submit"
-            class="bg-indigo-400 hover:bg-indigo-500 text-black py-2 px-2 rounded-lg mt-4">Next</button>
+        <button type="submit">Submit</button>   
+
+
+        <!-- <p *ngIf="errorMessage">{{ errorMessage }}</p> -->
+        <button type="submit" class="bg-indigo-400 hover:bg-indigo-500 text-black py-2 px-2 rounded-lg mt-4">Next</button>
     </form>
 </div>
 <p class="max-w-lg mt-12 mx-12 text-base w-1/2 mx-auto">
