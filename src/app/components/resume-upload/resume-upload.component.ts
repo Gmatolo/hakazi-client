@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-resume-upload',
@@ -23,17 +25,20 @@ export class ResumeUploadComponent {
     formData.append('resume', this.resumeFile!);
 
     this.http.post<{ success: boolean, errors: { file: string[] } }>('http://localhost:8000/api/upload_resume/', formData)
-      .subscribe(
-        response => {
-          if (response.success) {
-            this.router.navigate(['/success']);
-          } else {
-            this.errorMessage = response.errors.file[0];
+      .pipe(
+        tap((response: any) => {
+          if (!response.success) {
+            throw new Error(response.errors.resumeFile[0]);
           }
-        },
-        error => {
-          this.errorMessage = 'An error occurred while uploading your resume.';
-        }
-      );
+        }),
+        catchError((error: any) => {
+          this.errorMessage = error.message;
+          return throwError(() => new Error(error))
+        })
+      )
+      .subscribe(() => {
+        this.router.navigate(['/resume']);
+      });
   }
+
 }
