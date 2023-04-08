@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-resume-upload',
@@ -28,13 +27,12 @@ export class ResumeUploadComponent {
       .pipe(
         tap((response: any) => {
           if (!response.success) {
-            throw new Error(response.errors.resumeFile[0]);
+            throw new Error(response?.errors?.resumeFile[0]);
           }
+        }, (error: any) => {
+          console.log(error)
         }),
-        catchError((error: any) => {
-          this.errorMessage = error.message;
-          return throwError(() => new Error(error))
-        })
+        
       )
       .subscribe(() => {
         this.router.navigate(['/resume']);
